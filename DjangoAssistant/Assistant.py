@@ -6,7 +6,7 @@ class Assistant:
     _prompt = "How can I help you?\n"
 
     def __init__(self):
-        self.cmd_handler = CommandHandler()
+        self.cmd_handler = CommandHandler(self)
 
     def respond(self, user_input):
         """

@@ -6,9 +6,11 @@ class Command(metaclass=ABCMeta):
     A recognized command accepted by the Assistant with a defined response
     """
     recognized_commands = None
+    help_description = None
 
-    def __init__(self, user_input):
+    def __init__(self, user_input, assistant):
         self.user_input = user_input
+        self.assistant = assistant
 
     def recognize(self):
         """
@@ -24,3 +26,9 @@ class Command(metaclass=ABCMeta):
     @abstractmethod
     def respond(self):
         return
+
+    def help(self):
+        """
+        Print the name of the command and the help description for it
+        """
+        self.assistant.say(f'{self.recognized_commands[0]}: {self.help_description}')

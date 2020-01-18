@@ -1,6 +1,4 @@
-import sys
 from DjangoAssistant.commands.Command import Command
-from DjangoAssistant.Assistant import Assistant
 
 
 class Say(Command):
@@ -8,10 +6,11 @@ class Say(Command):
     Close the assistant
     """
     recognized_commands = ['bye', 'goodbye', 'close', 'exit']
+    help_description = 'Close the assistant.'
 
     def respond(self):
         """
         Say goodbye
         """
-        Assistant.say('Goodbye')
-        Assistant.kill()
+        self.assistant.say('Goodbye')
+        self.assistant.kill()

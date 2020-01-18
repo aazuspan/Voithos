@@ -9,7 +9,8 @@ class CommandHandler:
     """
     COMMAND_DIR = 'commands'
 
-    def __init__(self):
+    def __init__(self, assistant):
+        self.assistant = assistant
         self.cmd_list = self.get_commands()
         self.cmds = self.load_commands()
 
@@ -30,7 +31,7 @@ class CommandHandler:
         """
         loaded_cmds = []
         for cmd in self.cmd_list:
-            loaded_cmds.append(cmd(user_input=None))
+            loaded_cmds.append(cmd(user_input=None, assistant=self.assistant))
         return loaded_cmds
 
     def respond(self, user_input):
@@ -46,7 +47,3 @@ class CommandHandler:
                 cmd.respond()
                 return True
         return False
-
-    # def help(self):
-    #     for cmd in self.cmds:
-    #         print(cmd.recognized_commands[0])
