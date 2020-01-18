@@ -1,5 +1,4 @@
 from DjangoAssistant.commands.Command import Command
-from DjangoAssistant.Assistant import Assistant
 
 
 class Say(Command):

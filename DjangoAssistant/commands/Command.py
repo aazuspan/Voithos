@@ -1,9 +1,12 @@
 from abc import abstractmethod, ABCMeta
+from utilities.require_attributes import require_attributes
 
 
-class Command(metaclass=ABCMeta):
+class Command(metaclass=require_attributes("recognized_commands", "help_description")):
     """
-    A recognized command accepted by the Assistant with a defined response
+    A recognized command accepted by the Assistant with a defined response.
+
+    Recognized_commands and help_description must be implemented in all subclasses.
     """
     recognized_commands = None
     help_description = None

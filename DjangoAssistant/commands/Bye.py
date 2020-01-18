@@ -1,7 +1,7 @@
 from DjangoAssistant.commands.Command import Command
 
 
-class Say(Command):
+class Bye(Command):
     """
     Close the assistant
     """

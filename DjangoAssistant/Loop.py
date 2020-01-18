@@ -2,6 +2,9 @@ from Assistant import Assistant
 
 
 class Loop:
+    """
+    This class controls the main program loop of user input and assistant response
+    """
     def __init__(self):
         self.assistant = Assistant()
         self.run()
