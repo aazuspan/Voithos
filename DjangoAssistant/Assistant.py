@@ -9,12 +9,10 @@ class Assistant:
 
     def respond(self, user_input):
         """
-        Create a response to a user input
+        Create a response to a user input through the CommandHandler
         :param user_input: String input from user
-        :return: String response from Assistant
         """
-        response = self.cmd_handler.respond(user_input)
-        self.say(response)
+        self.cmd_handler.respond(user_input)
 
     def prompt(self):
         """

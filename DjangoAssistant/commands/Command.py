@@ -5,7 +5,7 @@ class Command(metaclass=ABCMeta):
     """
     A recognized command accepted by the Assistant with a defined response
     """
-    recognized_command = None
+    recognized_commands = None
 
     def __init__(self, user_input):
         self.user_input = user_input
@@ -16,8 +16,9 @@ class Command(metaclass=ABCMeta):
         :param user_input: String input from user
         :return: True if recognized, False if not
         """
-        if self.user_input.lower().startswith(self.recognized_command):
-            return True
+        for command in self.recognized_commands:
+            if self.user_input.lower().startswith(command):
+                return True
         return False
 
     @abstractmethod

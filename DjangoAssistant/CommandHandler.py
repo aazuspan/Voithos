@@ -50,5 +50,7 @@ class CommandHandler:
             cmd_obj = cmd(user_input)
 
             if cmd_obj.recognize():
-                return cmd_obj.respond()
-        return 'Not a valid command'
+                cmd_obj.respond()
+                return
+
+        # TODO: Warn the user if no command could be recognized
