@@ -2,7 +2,7 @@ import sys
 from CommandHandler import CommandHandler
 
 
-class Assistant:
+class Voithos:
     _prompt = "How can I help you?\n"
 
     def __init__(self):

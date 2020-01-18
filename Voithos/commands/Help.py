@@ -1,4 +1,4 @@
-from DjangoAssistant.commands.Command import Command
+from Voithos.commands.Command import Command
 
 
 class Help(Command):
@@ -12,7 +12,7 @@ class Help(Command):
         """
         Have each command display it's help information
         """
-        self.assistant.say('___COMMANDS___')
+        self.voithos.say('___COMMANDS___')
 
-        for cmd in self.assistant.cmd_handler.cmds:
+        for cmd in self.voithos.cmd_handler.cmds:
             cmd.help()

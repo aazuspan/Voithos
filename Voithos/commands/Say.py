@@ -1,16 +1,16 @@
-from DjangoAssistant.commands.Command import Command
+from Voithos.commands.Command import Command
 
 
 class Say(Command):
     """
-    Make assistant repeat the user input
+    Make Voithos repeat the user input
     """
     recognized_commands = ['say']
-    help_description = 'Have the assistant repeat what you type.'
+    help_description = 'Have Voithos repeat what you type.'
 
     def respond(self):
         """
         Repeat whatever was typed after 'say'
         """
         to_say = self.user_input.split(self.recognized_commands[0])[-1].strip()
-        self.assistant.say(to_say)
+        self.voithos.say(to_say)

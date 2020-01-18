@@ -1,6 +1,6 @@
 import importlib
 import pkgutil
-from DjangoAssistant.commands.Command import Command
+from Voithos.commands.Command import Command
 
 
 class CommandHandler:
@@ -9,8 +9,8 @@ class CommandHandler:
     """
     COMMAND_DIR = 'commands'
 
-    def __init__(self, assistant):
-        self.assistant = assistant
+    def __init__(self, voithos):
+        self.voithos = voithos
         self.cmd_list = self.get_commands()
         self.cmds = self.load_commands()
 
@@ -21,7 +21,7 @@ class CommandHandler:
         :return : A list of classes which are subclasses of Command
         """
         for (module_loader, name, ispkg) in pkgutil.iter_modules([self.COMMAND_DIR]):
-            importlib.import_module('DjangoAssistant.commands.' + name, __package__)
+            importlib.import_module('Voithos.commands.' + name, __package__)
         return Command.__subclasses__()
 
     def load_commands(self):
@@ -31,7 +31,7 @@ class CommandHandler:
         """
         loaded_cmds = []
         for cmd in self.cmd_list:
-            loaded_cmds.append(cmd(user_input=None, assistant=self.assistant))
+            loaded_cmds.append(cmd(user_input=None, voithos=self.voithos))
         return loaded_cmds
 
     def respond(self, user_input):
