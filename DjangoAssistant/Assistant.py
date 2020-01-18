@@ -13,7 +13,9 @@ class Assistant:
         Create a response to a user input through the CommandHandler
         :param user_input: String input from user
         """
-        self.cmd_handler.respond(user_input)
+        handled = self.cmd_handler.respond(user_input)
+        if not handled:
+            self.say("Sorry, I didn't recognize that command.")
 
     def prompt(self):
         """

@@ -1,9 +1,6 @@
 import importlib
 import pkgutil
-import logging
 from DjangoAssistant.commands.Command import Command
-
-logging.basicConfig(level='DEBUG')
 
 
 class CommandHandler:
@@ -29,13 +26,12 @@ class CommandHandler:
         """
         Check all loaded commands to see if one recognizes the user input. If so, have that command handle the response.
         :param user_input:
-        :return: String response from a command or 'not a valid command'
+        :return: True if command was handled, false if no commands were recognized
         """
         for cmd in self.cmds:
             cmd_obj = cmd(user_input)
 
             if cmd_obj.recognize():
                 cmd_obj.respond()
-                return
-
-        # TODO: Warn the user if no command could be recognized
+                return True
+        return False
