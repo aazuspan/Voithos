@@ -1,4 +1,4 @@
-from Voithos.commands.Command import Command
+from commands.Command import Command
 
 
 class Bye(Command):

@@ -1,4 +1,4 @@
-from Voithos.Voithos import Voithos
+from Voithos import Voithos
 
 
 class Loop:

@@ -1,6 +1,6 @@
 import importlib
 import pkgutil
-from Voithos.commands.Command import Command
+from commands.Command import Command
 
 
 class CommandHandler:
@@ -21,7 +21,7 @@ class CommandHandler:
         :return : A list of classes which are subclasses of Command
         """
         for (module_loader, name, ispkg) in pkgutil.iter_modules([self.COMMAND_DIR]):
-            importlib.import_module('Voithos.commands.' + name, __package__)
+            importlib.import_module('commands.' + name, __package__)
         return Command.__subclasses__()
 
     def load_commands(self):

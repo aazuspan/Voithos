@@ -1,4 +1,4 @@
-from Voithos.commands.Command import Command
+from commands.Command import Command
 
 
 class Repeat(Command):
@@ -6,7 +6,7 @@ class Repeat(Command):
     Make Voithos repeat what was last said by the Voithos
     """
     recognized_commands = ['repeat']
-    help_description = 'Repeat the last thing the Voithos said.'
+    help_description = 'Repeat the last thing Voithos said.'
 
     def respond(self):
         """
