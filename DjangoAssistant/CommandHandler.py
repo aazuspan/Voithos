@@ -5,7 +5,7 @@ from DjangoAssistant.commands.Command import Command
 
 class CommandHandler:
     """
-    The framework that accepts user input and forward it to the correct command
+    The framework that accepts user input and forwards it to the correct command
     """
     COMMAND_DIR = 'commands'
 

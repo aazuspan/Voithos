@@ -7,6 +7,7 @@ class Assistant:
 
     def __init__(self):
         self.cmd_handler = CommandHandler(self)
+        self.last_said = None
 
     def respond(self, user_input):
         """
@@ -32,9 +33,9 @@ class Assistant:
         """
         pass
 
-    @staticmethod
-    def say(to_say):
+    def say(self, to_say):
         print(to_say)
+        self.last_said = to_say
 
     @staticmethod
     def kill():

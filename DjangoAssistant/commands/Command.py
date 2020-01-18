@@ -22,7 +22,8 @@ class Command(metaclass=require_attributes("recognized_commands", "help_descript
         :return: True if recognized, False if not
         """
         for command in self.recognized_commands:
-            if self.user_input.lower().startswith(command):
+            # TODO: Prevent partial matches (ie asdfbyefjdksl matches bye)
+            if command in self.user_input.lower():
                 return True
         return False
 

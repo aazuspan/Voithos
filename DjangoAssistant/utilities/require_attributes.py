@@ -2,7 +2,7 @@ def require_attributes(*required_attrs):
     """
     When used as a metaclass, this will raise errors if a class does not define all of the required attributes.
     :param required_attrs: Strings representing attribute names that must be implemented
-    :return:
+    :return: A metaclass that requires classes have specified attributes defined on initialization.
     """
     class RequireAttributesMeta(type):
         def __init__(cls, name, bases, attrs):
