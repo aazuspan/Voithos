@@ -14,7 +14,4 @@ class Say(Command):
         :return : String response based on user input
         """
         to_say = self.user_input.split(self.recognized_commands[0])[-1].strip()
-
         Assistant.say(to_say)
-
-

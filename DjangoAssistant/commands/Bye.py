@@ -14,4 +14,4 @@ class Say(Command):
         Say goodbye
         """
         Assistant.say('Goodbye')
-        sys.exit()
+        Assistant.kill()

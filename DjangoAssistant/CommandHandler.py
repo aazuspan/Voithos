@@ -6,21 +6,6 @@ from DjangoAssistant.commands.Command import Command
 logging.basicConfig(level='DEBUG')
 
 
-def command(command_class):
-    """
-    Decorator that adds commands to the list of registered commands
-    """
-    def wrapper(*args, **kwargs):
-        """
-        Instantiate the class as usual if it is called
-        """
-        return command_class(*args, **kwargs)
-
-    logging.debug(f'Registered {command_class.__name__}')
-    CommandHandler.commands.append(command_class)
-    return wrapper
-
-
 class CommandHandler:
     """
     The framework that accepts user input and forward it to the correct command

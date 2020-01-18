@@ -1,3 +1,4 @@
+import sys
 from CommandHandler import CommandHandler
 
 
@@ -32,3 +33,10 @@ class Assistant:
     @staticmethod
     def say(to_say):
         print(to_say)
+
+    @staticmethod
+    def kill():
+        """
+        End the program
+        """
+        sys.exit()
