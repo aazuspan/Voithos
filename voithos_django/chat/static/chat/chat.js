@@ -17,7 +17,7 @@ function handleChatInput() {
         dataType: 'json',
         // If a response is received, add it to the page
         success: function (data) {
-                output_ul.innerHTML += `<li>${data['output']}</li>`
+                output_ul.innerHTML += `<li>${data['output']}</li>`;
             }
         })
 }

@@ -1,14 +1,14 @@
-from abc import abstractmethod, ABCMeta
-from utilities.require_attributes import require_attributes
+from abc import abstractmethod
+from Voithos.utilities.require_attributes import require_attributes
 
 
-class Command(metaclass=require_attributes("recognized_commands", "help_description")):
+class Command(metaclass=require_attributes("recognized_keywords", "help_description")):
     """
     A recognized command accepted by the voithos with a defined response.
 
-    Recognized_commands and help_description must be implemented in all subclasses.
+    recognized_keywords and help_description must be implemented in all subclasses.
     """
-    recognized_commands = None
+    recognized_keywords = None
     help_description = None
 
     def __init__(self, user_input, voithos):
@@ -21,9 +21,9 @@ class Command(metaclass=require_attributes("recognized_commands", "help_descript
         :param user_input: String input from user
         :return: True if recognized, False if not
         """
-        for command in self.recognized_commands:
+        for keyword in self.recognized_keywords:
             # TODO: Prevent partial matches (ie asdfbyefjdksl matches bye)
-            if command in self.user_input.lower():
+            if keyword in self.user_input.lower():
                 return True
         return False
 
@@ -35,4 +35,4 @@ class Command(metaclass=require_attributes("recognized_commands", "help_descript
         """
         Print the name of the command and the help description for it
         """
-        self.voithos.say(f'{self.recognized_commands[0]}: {self.help_description}')
+        return f'{self.recognized_keywords[0]}: {self.help_description}'

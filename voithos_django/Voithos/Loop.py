@@ -1,4 +1,4 @@
-from Voithos import Voithos
+from voithos_django.Voithos import Voithos
 
 
 class Loop:
@@ -10,6 +10,7 @@ class Loop:
         self.run()
 
     def run(self):
+        self.voithos.say('Hello, my name is Voithos.')
         while True:
             user_input = input(self.voithos.prompt())
             self.voithos.respond(user_input)

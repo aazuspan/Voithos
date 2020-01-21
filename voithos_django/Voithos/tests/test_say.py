@@ -1,5 +1,5 @@
 import unittest
-from Voithos.Voithos import Voithos
+from voithos_django.Voithos import Voithos
 from commands.Say import Say
 
 
