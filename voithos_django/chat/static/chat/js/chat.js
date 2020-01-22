@@ -18,9 +18,17 @@ function handleChatInput() {
         success: function (data) {
             output_div.innerHTML += `<div class='msg msg-user'>${input_text}</div>`;
             output_div.innerHTML += `<div class='msg msg-voithos'>${data['output']}</div>`;
+            scrollToBottom();
         }
     })
 }
 
 // When chat is submitted, handle it
 document.getElementById('submit-button').addEventListener('click', handleChatInput)
+
+
+// Automatically scroll to bottom of message box
+function scrollToBottom() {
+    const output_div = document.getElementById('message-container');
+    output_div.scrollTop = output_div.scrollHeight - output_div.clientHeight;
+}

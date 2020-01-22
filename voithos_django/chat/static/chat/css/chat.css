@@ -2,6 +2,13 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+.msg-container {
+    position: absolute;
+    top: 50px;
+    height: 80%;
+    overflow: auto;
+}
+
 .msg {
     width: 60%;
     padding: 18px;
