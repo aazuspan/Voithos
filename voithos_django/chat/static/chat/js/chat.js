@@ -1,6 +1,6 @@
 const USER = 'user';
 const VOITHOS = 'voithos';
-const MESSAGE_BOX = document.getElementById('message-container')
+const MESSAGE_BOX = document.getElementById('message-container');
 
 // Handle chat input by making a GET request with the data and receiving and displaying the response
 function handleChatInput() {
