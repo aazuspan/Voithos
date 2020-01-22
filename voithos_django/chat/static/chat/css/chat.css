@@ -1,0 +1,45 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+.msg {
+    width: 60%;
+    padding: 18px;
+    margin: 6px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Quicksand', sans-serif;
+    font-size: large;
+}
+
+.msg-voithos {
+    color: black;
+    background-color: rgb(250, 255, 255);
+    float: left;
+}
+
+.msg-user {
+    background-color: #8bb3af;
+    color: white;
+    float: right;
+}
+
+.navbar {
+    color: black;
+    background-color: #555555;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    font-family: 'Fredoka One', cursive;
+}
+
+.navbar-brand {
+    
+    font-size: large;
+}
+
+.input-group {
+    color: white;
+}
+
+.form-control {
+    font-size: large;
+}
