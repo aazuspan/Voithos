@@ -37,17 +37,23 @@ function handleChatInput() {
 function addMessage(message, sender) {
     if (sender == VOITHOS) {
         // Voithos responses should be slightly delayed for readability
-        setTimeout(function () { MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>` }, 750);
+        setTimeout(function () {
+            MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>`;
+            scrollToBottom();
+        }, 750);
     }
     else {
         MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>`;
+        scrollToBottom();
     }
-    scrollToBottom();
 }
 
 
 
 // Automatically scroll to bottom of message box
 function scrollToBottom() {
-    MESSAGE_BOX.scrollTop = MESSAGE_BOX.scrollHeight - MESSAGE_BOX.clientHeight;
+    MESSAGE_BOX.scroll({
+        top: MESSAGE_BOX.scrollHeight - MESSAGE_BOX.clientHeight,
+        behavior: 'smooth'
+    });
 }
