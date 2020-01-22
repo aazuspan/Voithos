@@ -1,9 +1,8 @@
 // Handle chat input by making a GET request with the data and receiving and displaying the response
 function handleChatInput() {
-    var input_form = document.getElementById('input-text')
-    var input_text = input_form.value;
-
-    var output_ul = document.getElementById('output-text')
+    const input_form = document.getElementById('input-text')
+    const input_text = input_form.value;
+    const output_div = document.getElementById('message-container')
 
     // Clear the form
     input_form.value = '';
@@ -17,9 +16,10 @@ function handleChatInput() {
         dataType: 'json',
         // If a response is received, add it to the page
         success: function (data) {
-                output_ul.innerHTML += `<li>${data['output']}</li>`;
-            }
-        })
+            output_div.innerHTML += `<div class='msg msg-user'>${input_text}</div>`;
+            output_div.innerHTML += `<div class='msg msg-voithos'>${data['output']}</div>`;
+        }
+    })
 }
 
 // When chat is submitted, handle it
