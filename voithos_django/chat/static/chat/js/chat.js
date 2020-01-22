@@ -1,8 +1,11 @@
+const USER = 'user';
+const VOITHOS = 'voithos';
+const MESSAGE_BOX = document.getElementById('message-container')
+
 // Handle chat input by making a GET request with the data and receiving and displaying the response
 function handleChatInput() {
     const input_form = document.getElementById('input-text')
     const input_text = input_form.value;
-    const output_div = document.getElementById('message-container')
 
     // Clear the form
     input_form.value = '';
@@ -14,13 +17,19 @@ function handleChatInput() {
             'input_text': input_text
         },
         dataType: 'json',
+
         // If a response is received, add it to the page
         success: function (data) {
-            output_div.innerHTML += `<div class='msg msg-user'>${input_text}</div>`;
-            output_div.innerHTML += `<div class='msg msg-voithos'>${data['output']}</div>`;
-            scrollToBottom();
+            addMessage(input_text, USER);
+            addMessage(data['output'], VOITHOS);
         }
     })
+}
+
+// Add a message to the message box. Message class based on whether it's sent by user or voithos
+function addMessage(message, sender) {
+    MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>`;
+    scrollToBottom();
 }
 
 // When chat is submitted, handle it
@@ -29,6 +38,5 @@ document.getElementById('submit-button').addEventListener('click', handleChatInp
 
 // Automatically scroll to bottom of message box
 function scrollToBottom() {
-    const output_div = document.getElementById('message-container');
-    output_div.scrollTop = output_div.scrollHeight - output_div.clientHeight;
+    MESSAGE_BOX.scrollTop = MESSAGE_BOX.scrollHeight - MESSAGE_BOX.clientHeight;
 }
