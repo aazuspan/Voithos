@@ -18,10 +18,12 @@ function handleChatInput() {
         },
         dataType: 'json',
 
-        // If a response is received, add it to the page
+        // If a server response is received, display the messages
         success: function (data) {
             addMessage(input_text, USER);
-            addMessage(data['output'], VOITHOS);
+
+            // Delay Voithos' response to feel more natural
+            setTimeout(function () { addMessage(data['output'], VOITHOS) }, 750);
         }
     })
 }
