@@ -4,7 +4,7 @@ body {
 
 .msg-container {
     position: absolute;
-    top: 50px;
+    top: 60px;
     bottom: 80px;
     width: 100%;
     padding: 20px;
@@ -46,12 +46,16 @@ body {
     font-size: x-large;
 }
 
-.navbar a {
-    color: #0ac2af;
+.navbar-brand:hover {
+    color: #2f9288;
 }
 
-.navbar a:hover {
-    color: #99e2db;
+.nav-link {
+    color: #7e7e7e;
+}
+
+.nav-link:hover {
+    color: #353535;
 }
 
 .form-control {
