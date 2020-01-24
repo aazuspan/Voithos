@@ -5,46 +5,53 @@ body {
 .msg-container {
     position: absolute;
     top: 50px;
-    height: 80%;
-    overflow: auto;
+    bottom: 80px;
+    width: 100%;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .msg {
     width: 60%;
     padding: 18px;
     margin: 6px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
     font-family: 'Quicksand', sans-serif;
     font-size: large;
 }
 
 .msg-voithos {
-    color: black;
-    background-color: rgb(250, 255, 255);
+    background-color: #0ac2af;
+    color: white;
     float: left;
+    border-top-left-radius: 0px;
 }
 
 .msg-user {
-    background-color: #8bb3af;
-    color: white;
+    background-color: rgb(250, 255, 255);
+    color: black;
     float: right;
+    border-top-right-radius: 0px;
 }
 
 .navbar {
-    color: black;
-    background-color: #555555;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-    font-family: 'Fredoka One', cursive;
+    background-color: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-brand {
-    
-    font-size: large;
+    color: #0ac2af;
+    font-family: 'Fredoka One', cursive;
+    font-size: x-large;
 }
 
-.input-group {
-    color: white;
+.navbar a {
+    color: #0ac2af;
+}
+
+.navbar a:hover {
+    color: #99e2db;
 }
 
 .form-control {

@@ -48,8 +48,6 @@ function addMessage(message, sender) {
     }
 }
 
-
-
 // Automatically scroll to bottom of message box
 function scrollToBottom() {
     MESSAGE_BOX.scroll({
