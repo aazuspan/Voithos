@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from Voithos.Voithos import Voithos
 
 
@@ -14,3 +14,13 @@ def chat(request):
         return JsonResponse({'output': response})
 
     return render(request, 'chat/index.html')
+
+
+# TODO: Create and pass About template
+def about(request):
+    return HttpResponse('<h1> ABOUT </h1>')
+
+
+# TODO: Create and pass Documentation template
+def documentation(request):
+    return HttpResponse('<h1> DOCUMENTATION </h1>')
