@@ -1,8 +1,11 @@
 import os
+import sys
 import unittest
 
+TEST_DIR = os.path.join('voithos_django', 'tests')
+sys.path.insert(0, os.path.join('voithos_django'))
+
 loader = unittest.TestLoader()
-TEST_DIR = os.path.join('Voithos', 'tests')
 suite = loader.discover(TEST_DIR)
 runner = unittest.TextTestRunner()
 runner.run(suite)
