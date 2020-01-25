@@ -12,5 +12,8 @@ class Say(Command):
         """
         Repeat whatever was typed after 'say'
         """
-        to_say = self.user_input.split(self.recognized_keywords[0])[-1].strip()
-        return to_say
+        response = self.user_input.split(self.recognized_keywords[0])[-1].strip()
+        if not response:
+            response = "Say what?"
+
+        return response
