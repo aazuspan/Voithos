@@ -10,7 +10,6 @@ def chat(request):
     """
     if request.GET.get('input_text'):
         request_dict = request.GET.dict()
-        print(request_dict)
         response = Voithos().respond(request_dict)
         return JsonResponse({'output': response})
 
