@@ -1,9 +1,9 @@
-import unittest
+from tests.CommandTest import CommandTest
 from Voithos.Voithos import Voithos
 from Voithos.commands.RollDice import RollDice
 
 
-class RollDiceTest(unittest.TestCase):
+class RollDiceTest(CommandTest):
     voithos = Voithos()
     test_cmd = RollDice(request_dict=None, voithos=voithos)
 
