@@ -1,7 +1,14 @@
+import random
 from Voithos.CommandHandler import CommandHandler
 
 
 class Voithos:
+    unknown_cmd_responses = [
+        "Sorry, I didn't recognize that command.",
+        "Sorry, I'm not sure what you're asking for...",
+        "Oops! I'm not sure how to answer that."
+    ]
+    
     def __init__(self):
         self.cmd_handler = CommandHandler(self)
 
@@ -14,13 +21,13 @@ class Voithos:
         responding_cmd = self.cmd_handler.choose_command(request_dict)
         response = None
         if not responding_cmd:
-            response = "Sorry, I didn't recognize that command."
+            response = random.choice(self.unknown_cmd_responses)
         else:
             try:
                 response = responding_cmd.respond()
             except Exception:
                 pass
             if not response:
-                response = "Sorry, it seems that something went wrong."
+                response = "Oops! it seems that something went wrong. "
 
         return response
