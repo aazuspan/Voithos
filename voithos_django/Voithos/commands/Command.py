@@ -43,8 +43,9 @@ class Command(metaclass=require_attributes("recognized_keywords", "help_descript
     def respond(self):
         return
 
-    def help(self):
+    @classmethod
+    def help(cls):
         """
         Print the name of the command and the help description for it
         """
-        return f'{self.recognized_keywords[0]}: {self.help_description}'
+        return f'<b>{cls.recognized_keywords[0]}</b>: {cls.help_description}'
