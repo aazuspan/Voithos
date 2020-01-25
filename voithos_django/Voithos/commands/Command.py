@@ -19,6 +19,13 @@ class Command(metaclass=require_attributes("recognized_keywords", "help_descript
     def user_input(self):
         return self.request_dict['input_text']
 
+    @property
+    def date(self):
+        if self.request_dict['date']:
+            return self.request_dict['date']
+        else:
+            return None
+
     @classmethod
     def recognize(cls, user_input):
         """
