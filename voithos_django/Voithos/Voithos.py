@@ -12,6 +12,7 @@ class Voithos:
         :return : A string response from Voithos
         """
         responding_cmd = self.cmd_handler.choose_command(request_dict)
+        response = None
         if not responding_cmd:
             response = "Sorry, I didn't recognize that command."
         else:
