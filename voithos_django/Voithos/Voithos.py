@@ -18,7 +18,13 @@ class Voithos:
         if not responding_cmd:
             response = "Sorry, I didn't recognize that command."
         else:
-            response = responding_cmd.respond()
+            try:
+                response = responding_cmd.respond()
+            except Exception:
+                pass
+            if not response:
+                response = "Sorry, it seems that something went wrong."
+
         self.last_said = response
         return response
 
