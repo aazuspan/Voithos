@@ -2,11 +2,8 @@ from Voithos.CommandHandler import CommandHandler
 
 
 class Voithos:
-    _prompt = "How can I help you?\n"
-
     def __init__(self):
         self.cmd_handler = CommandHandler(self)
-        self.last_said = None
 
     def respond(self, request_dict):
         """
@@ -25,12 +22,4 @@ class Voithos:
             if not response:
                 response = "Sorry, it seems that something went wrong."
 
-        self.last_said = response
         return response
-
-    def prompt(self):
-        """
-        Return a basic prompt for the user
-        :return: String prompt
-        """
-        return self._prompt
