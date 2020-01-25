@@ -12,7 +12,6 @@ class CommandHandler:
     def __init__(self, voithos):
         self.voithos = voithos
         self.cmd_list = self.get_commands()
-        self.cmds = self.load_commands()
 
     def get_commands(self):
         """
@@ -25,24 +24,13 @@ class CommandHandler:
             importlib.import_module('Voithos.commands.' + name, __package__)
         return Command.__subclasses__()
 
-    def load_commands(self):
+    def choose_command(self, request_dict):
         """
-        Instantiate all commands and store them for later use
-        :return:
+        Check all loaded commands to see if one recognizes the user input. If so, instantiate and return that command.
+        :param request_dict: Dictionary of parameters associated with a user request, such as input_text, date, etc.
+        :return: An instantiated command if one recognizes the input text, else None
         """
-        loaded_cmds = []
         for cmd in self.cmd_list:
-            loaded_cmds.append(cmd(user_input=None, voithos=self.voithos))
-        return loaded_cmds
-
-    def respond(self, user_input):
-        """
-        Check all loaded commands to see if one recognizes the user input. If so, have that command handle the response.
-        :param user_input:
-        :return: True if command was handled, false if no commands were recognized
-        """
-        for cmd in self.cmds:
-            cmd.user_input = user_input
-
-            if cmd.recognize():
-                return cmd.respond()
+            if cmd.recognize(request_dict['input_text']):
+                return cmd(request_dict, self.voithos)
+        return None

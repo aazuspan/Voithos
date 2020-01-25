@@ -8,16 +8,17 @@ class Voithos:
         self.cmd_handler = CommandHandler(self)
         self.last_said = None
 
-    def respond(self, user_input):
+    def respond(self, request_dict):
         """
         Create a response to a user input through the CommandHandler
-        :param user_input: String input from user
+        :param request_dict: Dictionary of parameters associated with a user request, such as input_text, date, etc.
         :return : A string response from Voithos
         """
-        response = self.cmd_handler.respond(user_input)
-        if not response:
+        responding_cmd = self.cmd_handler.choose_command(request_dict)
+        if not responding_cmd:
             response = "Sorry, I didn't recognize that command."
-
+        else:
+            response = responding_cmd.respond()
         self.last_said = response
         return response
 

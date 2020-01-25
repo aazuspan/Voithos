@@ -19,7 +19,7 @@ class RollDice(Command):
 
         if not dice:
             response = 'Sorry, that input was invalid. To roll random dice, please say something like "roll 2d20" or' \
-                       '"roll a d6".'
+                       ' "roll a d6".'
         else:
             for die in dice:
                 dice_sum += self.roll_dice(die[0], die[1])

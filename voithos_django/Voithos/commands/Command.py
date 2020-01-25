@@ -11,19 +11,24 @@ class Command(metaclass=require_attributes("recognized_keywords", "help_descript
     recognized_keywords = None
     help_description = None
 
-    def __init__(self, user_input, voithos):
-        self.user_input = user_input
+    def __init__(self, request_dict, voithos):
+        self.request_dict = request_dict
         self.voithos = voithos
 
-    def recognize(self):
+    @property
+    def user_input(self):
+        return self.request_dict['input_text']
+
+    @classmethod
+    def recognize(cls, user_input):
         """
         Test if the user input is recognized as calling this command
-        :param user_input: String input from user
+        :param user_input: A string input by the user
         :return: True if recognized, False if not
         """
-        for keyword in self.recognized_keywords:
+        for keyword in cls.recognized_keywords:
             # TODO: Prevent partial matches (ie asdfbyefjdksl matches bye)
-            if keyword in self.user_input.lower():
+            if keyword in user_input.lower():
                 return True
         return False
 

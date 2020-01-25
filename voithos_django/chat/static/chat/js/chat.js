@@ -13,6 +13,7 @@ addMessage('Hello! I am Voithos. What can I do for you?', VOITHOS);
 function handleChatInput() {
     const input_form = document.getElementById('input-text')
     const input_text = input_form.value;
+    const date = new Date();
 
     // Clear the form
     input_form.value = '';
@@ -21,7 +22,8 @@ function handleChatInput() {
     $.ajax({
         url: '/',
         data: {
-            'input_text': input_text
+            'input_text': input_text,
+            'date': date,
         },
         dataType: 'json',
 

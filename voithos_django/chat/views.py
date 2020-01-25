@@ -9,8 +9,9 @@ def chat(request):
     Handle the chat page. If a GET request is received with input text, pass it to Voithos and return the Json response
     """
     if request.GET.get('input_text'):
-        user_input = request.GET.get('input_text')
-        response = Voithos().respond(user_input)
+        request_dict = request.GET.dict()
+        print(request_dict)
+        response = Voithos().respond(request_dict)
         return JsonResponse({'output': response})
 
     return render(request, 'chat/index.html')
