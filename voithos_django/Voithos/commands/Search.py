@@ -6,8 +6,7 @@ class Search(Command):
     """
     Return link to google search
     """
-    recognized_keywords = ['search']
-    help_description = 'Have Voithos perform a google search.'
+    name = 'search'
     utterances = [
         'Search for Indiana Jones movies',
         'search how long chickens live?',
@@ -19,13 +18,14 @@ class Search(Command):
         'look up where is the closest resteraunt',
         'please look up how to spell resteraunt'
     ]
-    name = 'search'
+    help_description = 'Have Voithos perform a google search.'
 
     def respond(self):
         """
         Perform a google search and return a url link for the results
         """
-        search_terms = self.user_input.split(self.recognized_keywords[0])[-1].strip()
+        # TODO: Split the user input to only search words that come after the command
+        search_terms = self.user_input
         cleaned_search_terms = self.urlify(search_terms)
         search_url = self.build_search_url(cleaned_search_terms)
         search_link = self.build_link(search_url)

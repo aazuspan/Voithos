@@ -6,8 +6,7 @@ class FlipCoin(Command):
     """
     Voithos flips a coin
     """
-    recognized_keywords = ['flip a coin']
-    help_description = 'Have Voithos flip a coin.'
+    name = 'flipcoin'
     utterances = [
         'flip a coin',
         'toss a coin',
@@ -17,7 +16,7 @@ class FlipCoin(Command):
         'coin toss',
         'flip coin'
     ]
-    name = 'flipcoin'
+    help_description = 'Have Voithos flip a coin.'
 
     def respond(self):
         """

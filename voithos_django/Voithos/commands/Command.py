@@ -2,13 +2,14 @@ from abc import abstractmethod
 from Voithos.utilities.require_attributes import require_attributes
 
 
-class Command(metaclass=require_attributes("recognized_keywords", "help_description")):
+class Command(metaclass=require_attributes("name", "utterances", "help_description")):
     """
     A recognized command accepted by the voithos with a defined response.
 
     recognized_keywords and help_description must be implemented in all subclasses.
     """
-    recognized_keywords = None
+    name = None
+    utterances = None
     help_description = None
 
     def __init__(self, request_dict, voithos):
@@ -26,19 +27,6 @@ class Command(metaclass=require_attributes("recognized_keywords", "help_descript
         else:
             return None
 
-    @classmethod
-    def recognize(cls, user_input):
-        """
-        Test if the user input is recognized as calling this command
-        :param user_input: A string input by the user
-        :return: True if recognized, False if not
-        """
-        for keyword in cls.recognized_keywords:
-            # TODO: Prevent partial matches (ie asdfbyefjdksl matches bye)
-            if keyword in user_input.lower():
-                return True
-        return False
-
     @abstractmethod
     def respond(self):
         return
@@ -48,4 +36,4 @@ class Command(metaclass=require_attributes("recognized_keywords", "help_descript
         """
         Print the name of the command and the help description for it
         """
-        return f'<b>{cls.recognized_keywords[0]}</b>: {cls.help_description}'
+        return f'<b>{cls.name[0]}</b>: {cls.help_description}'

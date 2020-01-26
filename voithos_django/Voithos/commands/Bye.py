@@ -5,9 +5,16 @@ class Bye(Command):
     """
     Close Voithos
     """
-    recognized_keywords = ['bye', 'goodbye', 'close', 'exit']
-    help_description = 'Close Voithos.'
     name = 'bye'
+    utterances = [
+        'bye',
+        'goodbye',
+        'see you later',
+        'bye Voithos',
+        'goodbye Voithos',
+        "I'm leaving"
+    ]
+    help_description = 'Close Voithos.'
 
     def respond(self):
         """
