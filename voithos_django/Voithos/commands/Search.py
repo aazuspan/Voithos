@@ -8,6 +8,18 @@ class Search(Command):
     """
     recognized_keywords = ['search']
     help_description = 'Have Voithos perform a google search.'
+    utterances = [
+        'Search for Indiana Jones movies',
+        'search how long chickens live?',
+        'please search for Rolling Stones Satisfaction',
+        'find how many quarts in a cup',
+        'find how to train goldfish',
+        'please find goldfish recipe',
+        'look up local news',
+        'look up where is the closest resteraunt',
+        'please look up how to spell resteraunt'
+    ]
+    name = 'search'
 
     def respond(self):
         """

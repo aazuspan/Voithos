@@ -7,6 +7,7 @@ class Repeat(Command):
     """
     recognized_keywords = ['repeat']
     help_description = 'Repeat the last thing Voithos said.'
+    name = 'repeat'
 
     def respond(self):
         """

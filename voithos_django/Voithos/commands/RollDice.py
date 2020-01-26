@@ -9,6 +9,14 @@ class RollDice(Command):
     """
     recognized_keywords = ['roll']
     help_description = 'Have Voithos roll a die. Example: "roll a d20" or "roll 4d6" or "roll 4d6 and 2d12"'
+    utterances = [
+        'roll dice',
+        'roll a die',
+        'roll a d20',
+        'roll 4d6',
+        'please roll 2d12',
+    ]
+    name = 'rolldice'
 
     def respond(self):
         """
