@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from .django_secrets import secrets
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,8 +20,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+def generate_new_secret_key(filename):
+    """
+    Build a random secret key for Django
+    """
+    from django.utils.crypto import get_random_string
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    SECRET_KEY = get_random_string(50, chars)
+    with open(filename, 'w') as secret:
+        secret.write(f'DJANGO_SECRET_KEY = "{SECRET_KEY}"')
+
+try:
+    from secret import DJANGO_SECRET_KEY
+except (ImportError, ModuleNotFoundError):
+    generate_new_secret_key(os.path.join(BASE_DIR, 'secret.py'))
+    from secret import DJANGO_SECRET_KEY
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = DJANGO_SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
