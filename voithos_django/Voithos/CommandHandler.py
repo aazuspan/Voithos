@@ -19,18 +19,39 @@ class CommandHandler:
         Command in a list
         :return : A list of classes which are subclasses of Command
         """
-        # TODO: Fix the import error that's causing commands to not load
         for (module_loader, name, ispkg) in pkgutil.iter_modules([self.COMMAND_DIR]):
             importlib.import_module('Voithos.commands.' + name, __package__)
         return Command.__subclasses__()
 
     def choose_command(self, request_dict):
         """
-        Check all loaded commands to see if one recognizes the user input. If so, instantiate and return that command.
+        Find the best matching command to respond to a request dictionary
         :param request_dict: Dictionary of parameters associated with a user request, such as input_text, date, etc.
         :return: An instantiated command if one recognizes the input text, else None
         """
+        cmd = None
+        cmd_name = self.parse_cmd_name(request_dict['input_text'])
+        if cmd_name:
+            cmd = self.get_cmd_from_name(cmd_name)
+        if cmd:
+            cmd = cmd(request_dict=request_dict, voithos=self.voithos)
+        return cmd
+
+    def parse_cmd_name(self, user_input):
+        """
+        Use the Voithos NLU engine identify a command name from a user input
+        :param user_input: User submitted string that may contain a command
+        :return: The name of a command if one is recognized, or else None
+        """
+        result = self.voithos.nlu_engine.parse(user_input)
+        return result['intent']['intentName']
+
+    def get_cmd_from_name(self, cmd_name):
+        """
+        Find the command class that matches a given command name
+        :param cmd_name: String name of a command
+        :return: A command class
+        """
         for cmd in self.cmd_list:
-            if cmd.recognize(request_dict['input_text']):
-                return cmd(request_dict, self.voithos)
-        return None
+            if cmd.name == cmd_name:
+                return cmd
