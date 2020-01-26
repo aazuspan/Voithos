@@ -7,6 +7,18 @@ class Help(Command):
     """
     recognized_keywords = ['help']
     help_description = 'Display a list of all commands and their descriptions.'
+    utterances = [
+        'help',
+        'what can you do?',
+        'what is this?',
+        'command list',
+        'what commands can I do?',
+        'what should I type',
+        'help me',
+        'please help',
+        'how to use this?',
+    ]
+    name = 'help'
 
     def respond(self):
         """

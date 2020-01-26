@@ -7,6 +7,13 @@ class Say(Command):
     """
     recognized_keywords = ['say']
     help_description = 'Have Voithos repeat what you type.'
+    utterances = [
+        'say this',
+        'please say this',
+        'can you say a sentence?',
+        'hey Voithos, say "Im a little fat girl"'
+    ]
+    name = 'say'
 
     def respond(self):
         """
