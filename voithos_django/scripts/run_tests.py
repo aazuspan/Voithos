@@ -2,7 +2,7 @@ import os
 import sys
 import unittest
 
-TEST_DIR = os.path.join('voithos_django', 'tests')
+TEST_DIR = os.path.join('tests')
 sys.path.insert(0, os.path.join('voithos_django'))
 
 loader = unittest.TestLoader()
