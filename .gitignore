@@ -2,4 +2,4 @@
 *.pyc
 secret.py
 .vscode/
-utilities/NLU/
+NLU
