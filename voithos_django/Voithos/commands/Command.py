@@ -36,4 +36,4 @@ class Command(metaclass=require_attributes("name", "utterances", "help_descripti
         """
         Print the name of the command and the help description for it
         """
-        return f'<b>{cls.name[0]}</b>: {cls.help_description}'
+        return f'<b>{cls.name}</b>: {cls.help_description}'
