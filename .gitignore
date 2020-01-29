@@ -3,3 +3,4 @@
 secret.py
 .vscode/
 NLU
+*.out
