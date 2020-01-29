@@ -3,6 +3,7 @@ import os
 import shutil
 from snips_nlu import SnipsNLUEngine
 from snips_nlu.default_configs import CONFIG_EN
+from snips_nlu.exceptions import PersistingError
 from Voithos.CommandHandler import CommandHandler
 
 
@@ -14,12 +15,14 @@ def main():
     training_json = json.loads(build_training_dataset())
     engine_path = os.path.join('Voithos', 'utilities', 'NLU')
 
-    if os.path.exists(engine_path):
-        shutil.rmtree(engine_path)
-
     nlu_engine = SnipsNLUEngine(config=CONFIG_EN)
     nlu_engine = nlu_engine.fit(training_json)
-    nlu_engine.persist(engine_path)
+
+    try:
+        nlu_engine.persist(engine_path)
+    except PersistingError:
+        shutil.rmtree(engine_path)
+        nlu_engine.persist(engine_path)
 
 
 def build_training_dataset():
@@ -36,7 +39,8 @@ def build_training_dataset():
 
             for utterance in cmd.utterances:
                 # This is a nightmare.
-                cmd_dict['intents'][cmd.name]['utterances'][0]['data'].append({"text": utterance})
+                cmd_dict['intents'][cmd.name]['utterances'][0]['data'].append(
+                    {"text": utterance})
         except AttributeError:
             pass
 
