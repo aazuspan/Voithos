@@ -1,6 +1,7 @@
 const USER = 'user';
 const VOITHOS = 'voithos';
 const MESSAGE_BOX = document.getElementById('message-container');
+const RESPONSE_DELAY_MS = 750;
 
 
 // When chat is submitted, handle it
@@ -14,6 +15,8 @@ function handleChatInput() {
     const input_form = document.getElementById('input-text')
     const input_text = input_form.value;
     const date = new Date();
+    // Record when the message is received to set response timeout
+    const start_time = date.getTime();
 
     // Clear the form
     input_form.value = '';
@@ -31,24 +34,20 @@ function handleChatInput() {
 
         // If a server response is received, display the response
         success: function (data) {
-            addMessage(data['output'], VOITHOS)
+            const end_time = new Date().getTime();
+            // Subtract time it took to get response from delay time
+            const delay_time = Math.max(RESPONSE_DELAY_MS - (end_time - start_time), 0);
+            addMessage(data['output'], VOITHOS, delay_time)
         }
     })
 }
 
 // Add a message to the message box. Message class based on whether it's sent by user or voithos
-function addMessage(message, sender) {
-    if (sender == VOITHOS) {
-        // Voithos responses should be slightly delayed for readability
-        setTimeout(function () {
-            MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>`;
-            scrollToBottom();
-        }, 750);
-    }
-    else {
+function addMessage(message, sender, delay = 0) {
+    setTimeout(function () {
         MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>`;
         scrollToBottom();
-    }
+    }, delay);
 }
 
 // Automatically scroll to bottom of message box
