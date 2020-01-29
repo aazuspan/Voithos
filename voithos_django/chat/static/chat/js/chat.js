@@ -18,6 +18,8 @@ function handleChatInput() {
     // Clear the form
     input_form.value = '';
 
+    addMessage(input_text, USER);
+
     // Send the form data in a GET request
     $.ajax({
         url: '/',
@@ -27,9 +29,8 @@ function handleChatInput() {
         },
         dataType: 'json',
 
-        // If a server response is received, display the messages
+        // If a server response is received, display the response
         success: function (data) {
-            addMessage(input_text, USER);
             addMessage(data['output'], VOITHOS)
         }
     })
