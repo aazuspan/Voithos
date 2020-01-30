@@ -13,7 +13,12 @@ def chat(request):
         response = Voithos().respond(request_dict)
         return JsonResponse({'output': response})
 
-    return render(request, 'chat/index.html')
+    cmd_names = []
+    for cmd in Voithos().cmd_handler.cmd_list:
+        cmd_names.append(cmd.name)
+    context = {'cmd_names': cmd_names}
+
+    return render(request, 'chat/index.html', context=context)
 
 
 # TODO: Create and pass About template

@@ -35,6 +35,15 @@ body {
     border-top-right-radius: 0px;
 }
 
+.button-review {
+    color: rgba(255, 255, 255, 0.5);
+    background-color: #23b4a6;
+}
+
+.button-review:hover {
+    color: white;
+}
+
 .navbar {
     background-color: white;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
