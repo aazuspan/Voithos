@@ -1,7 +1,7 @@
 import json
 import os
 import shutil
-from snips_nlu import SnipsNLUEngine
+from snips_nlu import SnipsNLUEngine, load_resources
 from snips_nlu.default_configs import CONFIG_EN
 from snips_nlu.exceptions import PersistingError
 from Voithos.CommandHandler import CommandHandler
@@ -15,7 +15,8 @@ def main():
     training_json = json.loads(build_training_dataset())
     engine_path = os.path.join('Voithos', 'utilities', 'NLU')
 
-    nlu_engine = SnipsNLUEngine(config=CONFIG_EN)
+    nlu_engine = SnipsNLUEngine(
+        config=CONFIG_EN, resources=load_resources("snips_nlu_en"))
     nlu_engine = nlu_engine.fit(training_json)
 
     try:
