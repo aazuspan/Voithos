@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath voithos_django.voithos_django.wsgi
+web: gunicorn --pythonpath voithos_django voithos_django.wsgi
