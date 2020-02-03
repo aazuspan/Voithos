@@ -1,6 +1,6 @@
 import os
 import random
-from snips_nlu import SnipsNLUEngine
+from snips_nlu import SnipsNLUEngine, load_resources
 from snips_nlu.exceptions import LoadingError
 from Voithos.CommandHandler import CommandHandler
 
@@ -24,7 +24,8 @@ class Voithos:
         :return : A string response from Voithos
         """
         try:
-            self.nlu_engine = SnipsNLUEngine.from_path(self.engine_path)
+            self.nlu_engine = SnipsNLUEngine.from_path(
+                self.engine_path, resources=load_resources("snips_nlu_en"))
         # If the NLU engine is missing (eg retraining)
         except LoadingError:
             return self.error_msg
