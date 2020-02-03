@@ -10,6 +10,7 @@ django = "*"
 snips-nlu = "*"
 gunicorn = "*"
 whitenoise = "*"
+snips-nlu-en = {file = "https://github.com/snipsco/snips-nlu-language-resources/releases/download/snips_nlu_en-0.2.3/snips_nlu_en-0.2.3.tar.gz"}
 
 [requires]
 python_version = "3.7"

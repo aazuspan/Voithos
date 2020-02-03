@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "91e6e81cad8cfc89795a0095f817336441bbd1c779ffada33e4f5aef13cb9ea8"
+            "sha256": "3e0be3e47be529e34d194cc017ffc7dc52020aac491ebff4efa7d835a81ef834"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -277,6 +277,9 @@
             ],
             "index": "pypi",
             "version": "==0.20.2"
+        },
+        "snips-nlu-en": {
+            "file": "https://github.com/snipsco/snips-nlu-language-resources/releases/download/snips_nlu_en-0.2.3/snips_nlu_en-0.2.3.tar.gz"
         },
         "snips-nlu-parsers": {
             "hashes": [
