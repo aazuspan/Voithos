@@ -1,1 +1,1 @@
-web: gunicorn voithos_django.wsgi
+web: gunicorn voithos_django.voithos_django.wsgi
