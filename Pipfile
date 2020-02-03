@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 snips-nlu = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"
