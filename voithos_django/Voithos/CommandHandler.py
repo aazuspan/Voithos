@@ -8,7 +8,7 @@ class CommandHandler:
     """
     The framework that accepts user input and forwards it to the correct command
     """
-    COMMAND_DIR = os.path.join('Voithos', 'commands')
+    COMMAND_DIR = os.path.join('voithos_django', 'Voithos', 'commands')
 
     def __init__(self, voithos):
         self.voithos = voithos

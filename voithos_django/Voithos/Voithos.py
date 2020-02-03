@@ -13,7 +13,7 @@ class Voithos:
         "Oops! I'm not sure how to answer that."
     ]
     error_msg = "Oops! it seems that something went wrong. "
-    engine_path = os.path.join('Voithos', 'utilities', 'NLU')
+    engine_path = os.path.join('voithos_django', 'Voithos', 'utilities', 'NLU')
     logging.basicConfig(level=logging.INFO)
 
     def __init__(self):
