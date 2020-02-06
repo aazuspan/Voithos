@@ -20,7 +20,7 @@
 </form>
 
 <!-- Response feedback modal -->
-<div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog" aria-labelledby="responseFeedbackModal"
+<div class="modal fade" id="feedback-modal" tabindex="-1" role="dialog" aria-labelledby="responseFeedbackModal"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -31,7 +31,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <select id="cmd-names" class="form-control" selected="greeting">
+                <select id="command-choices" class="form-control">
                     <option value="" selected disabled hidden>What command were you trying to use?</option>
                     {% for cmd in cmd_names %}
                     <option value={{ cmd }}>{{ cmd }}</option>
@@ -40,11 +40,14 @@
                 <br>
                 <small class='text-muted'>Your feedback helps Voithos learn! Report incorrect responses to train
                     Voithos' language understanding engine.</small>
+                <div id="response-input" hidden></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary disabled">Submit Feedback</button>
+                <button type="button" id="feedback-submit" class="btn btn-primary" data-dismiss="modal" disabled>Submit
+                    Feedback</button>
             </div>
+
         </div>
     </div>
 </div>
