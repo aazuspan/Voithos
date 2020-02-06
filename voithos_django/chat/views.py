@@ -11,7 +11,8 @@ def chat(request):
     if request.GET.get('input_text'):
         request_dict = request.GET.dict()
         response = Voithos().respond(request_dict)
-        return JsonResponse({'output': response})
+        context = {'input': request_dict['input_text'], 'output': response}
+        return JsonResponse(context)
 
     cmd_names = []
     for cmd in Voithos().cmd_handler.cmd_list:
