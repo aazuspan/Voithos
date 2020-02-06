@@ -6,8 +6,24 @@ const RESPONSE_DELAY_MS = 750;
 
 // When chat is submitted, handle it
 document.getElementById('submit-button').addEventListener('click', handleChatInput)
+intro();
 
-addMessage('Hello! I am Voithos. What can I do for you?', VOITHOS);
+// Voithos introduction for new user
+function intro() {
+    let inputGroupWrapper = document.getElementById('input-group-wrapper')
+    addMessage('Hello! I am Voithos. I am a personal assistant that uses machine learning and artificial intelligence to perform tasks for you.', VOITHOS, 1000);
+    addMessage('You can give me commands or ask me questions by typing in the form at the bottom of the screen and pressing send. For example, you could say "Tell me a joke, Voithos!"', VOITHOS, 2500);
+
+    // Add a blue highlight to the text box that disappears when clicked
+    setTimeout(function () {
+        inputGroupWrapper.classList.add('blue-highlight');
+        inputGroupWrapper.addEventListener('click', function () {
+            inputGroupWrapper.classList.remove('blue-highlight');
+        }, { once: true });
+    }, 3000);
+
+    addMessage('If you\'re not sure what to ask me, you can type "help" to get a list of commands I will recognize.', VOITHOS, 7000);
+}
 
 
 // Handle chat input by making a GET request with the data and receiving and displaying the response
