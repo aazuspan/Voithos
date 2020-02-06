@@ -64,5 +64,8 @@ body {
 
 .blue-highlight {
     box-shadow: 0px 0px 30px rgb(29, 172, 255);
-    transition: 2s;
+}
+
+#input-group-wrapper {
+    transition: 2s box-shadow;
 }

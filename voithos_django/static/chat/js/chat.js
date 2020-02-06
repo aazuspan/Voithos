@@ -10,11 +10,18 @@ intro();
 
 // Voithos introduction for new user
 function intro() {
+    let inputGroupWrapper = document.getElementById('input-group-wrapper')
     addMessage('Hello! I am Voithos. I am a personal assistant that uses machine learning and artificial intelligence to perform tasks for you.', VOITHOS);
     setTimeout(function () { addMessage('You can give me commands or ask me questions by typing your input in the form at the bottom of the screen.', VOITHOS); }, 2500);
-    setTimeout(function () { document.getElementById('input-group-wrapper').classList.add('blue-highlight'); }, 3500);
+
+    // Add a blue highlight to the text box that disappears when clicked
+    setTimeout(function () {
+        inputGroupWrapper.classList.add('blue-highlight');
+        inputGroupWrapper.addEventListener('click', function () {
+            inputGroupWrapper.classList.remove('blue-highlight');
+        }, { once: true });
+    }, 3000);
     setTimeout(function () { addMessage('You can type "help" any time to get a list of possible commands.', VOITHOS); }, 6000);
-    setTimeout(function () { document.getElementById('input-group-wrapper').classList.remove('blue-highlight'); }, 9000);
 }
 
 
