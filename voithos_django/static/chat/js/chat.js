@@ -12,7 +12,7 @@ intro();
 function intro() {
     let inputGroupWrapper = document.getElementById('input-group-wrapper')
     addMessage('Hello! I am Voithos. I am a personal assistant that uses machine learning and artificial intelligence to perform tasks for you.', VOITHOS, 1000);
-    addMessage('You can give me commands or ask me questions by typing your input in the form at the bottom of the screen.', VOITHOS, 2500);
+    addMessage('You can give me commands or ask me questions by typing in the form at the bottom of the screen and pressing send. For example, you could say "Tell me a joke, Voithos!"', VOITHOS, 2500);
 
     // Add a blue highlight to the text box that disappears when clicked
     setTimeout(function () {
@@ -22,7 +22,7 @@ function intro() {
         }, { once: true });
     }, 3000);
 
-    addMessage('You can type "help" at any time to get a list of possible commands.', VOITHOS, 6000);
+    addMessage('If you\'re not sure what to ask me, you can type "help" to get a list of commands I will recognize.', VOITHOS, 7000);
 }
 
 
