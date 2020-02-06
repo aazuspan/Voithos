@@ -21,6 +21,12 @@ function handleChatInput() {
     // Clear the form
     input_form.value = '';
 
+    // Reject inputs without any letters
+    if (!input_text.match(/[A-Za-z]+/)) {
+        return;
+    }
+
+
     addMessage(input_text, USER);
 
     // Send the form data in a GET request
