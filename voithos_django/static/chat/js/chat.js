@@ -42,8 +42,7 @@ function handleChatInput() {
         return;
     }
 
-
-    addMessage(input_text, USER);
+    new Message(input_text, USER).post();
 
     // Send the form data in a GET request
     $.ajax({
@@ -59,7 +58,7 @@ function handleChatInput() {
             const end_time = new Date().getTime();
             // Subtract time it took to get response from delay time
             const delay_time = Math.max(RESPONSE_DELAY_MS - (end_time - start_time), 0);
-            addMessage(data['output'], VOITHOS, delay_time)
+            new Message(data['output'], VOITHOS, delay_time).post();
         }
     })
 }
@@ -78,4 +77,18 @@ function scrollToBottom() {
         top: MESSAGE_BOX.scrollHeight - MESSAGE_BOX.clientHeight,
         behavior: 'smooth'
     });
+}
+
+class Message {
+    constructor(message, sender, delay = 0) {
+        this.message = message;
+        this.sender = sender;
+        this.delay = delay;
+    }
+
+    // Add the message to the page
+    post() {
+        MESSAGE_BOX.innerHTML += `<div class='msg msg-${this.sender}'>${this.message}</div>`;
+        scrollToBottom();
+    }
 }
