@@ -40,12 +40,27 @@ class Voithos:
         else:
             cmd_name = cmd.name
             try:
-                response = cmd.respond()
+                response = str(cmd.respond())
             except Exception:
                 logging.exception('Error generating response!')
             if not response:
                 response = self.error_msg
 
+        if cmd_name == 'help':
+            response_delay = 0
+        else:
+            response_delay = self.calculate_response_delay()
+
         logging.info(
             f'Input "{request_dict["input_text"]}" generates response "{response}" from command "{cmd_name}"')
-        return response
+        return response, response_delay
+
+    @staticmethod
+    def calculate_response_delay():
+        """
+        Calculate an appropriate delay time for Voithos to process a given response
+        :return: Delay time in milliseconds
+        """
+        min_response_delay = 1000
+
+        return min_response_delay

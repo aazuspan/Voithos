@@ -1,7 +1,6 @@
 const USER = 'user';
 const VOITHOS = 'voithos';
 const MESSAGE_BOX = document.getElementById('message-container');
-const RESPONSE_DELAY_MS = 750;
 
 class MessageQueue {
     constructor() {
@@ -80,7 +79,6 @@ function intro() {
     queue.addMessage(new Message('If you\'re not sure what to ask me, you can type "help" to get a list of commands I will recognize.', VOITHOS, 4500));
 }
 
-
 // Handle chat input by making a GET request with the data and receiving and displaying the response
 function handleChatInput() {
     const input_form = document.getElementById('input-text')
@@ -111,9 +109,10 @@ function handleChatInput() {
         // If a server response is received, display the response
         success: function (data) {
             const end_time = new Date().getTime();
+            const response_delay = data['delay'];
             // Subtract time it took to get response from delay time
-            const delay_time = Math.max(RESPONSE_DELAY_MS - (end_time - start_time), 0);
-            queue.addMessage(new Message(data['output'], VOITHOS, delay_time));
+            const actual_delay = Math.max(response_delay - (end_time - start_time), 0);
+            queue.addMessage(new Message(data['output'], VOITHOS, actual_delay));
         }
     })
 }
