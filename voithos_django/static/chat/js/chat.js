@@ -118,14 +118,6 @@ function handleChatInput() {
     })
 }
 
-// Add a message to the message box. Message class based on whether it's sent by user or voithos
-function addMessage(message, sender, delay = 0) {
-    setTimeout(function () {
-        MESSAGE_BOX.innerHTML += `<div class='msg msg-${sender}'>${message}</div>`;
-        scrollToBottom();
-    }, delay);
-}
-
 // Automatically scroll to bottom of message box
 function scrollToBottom() {
     MESSAGE_BOX.scroll({
