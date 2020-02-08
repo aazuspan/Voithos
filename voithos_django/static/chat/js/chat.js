@@ -83,6 +83,7 @@ function intro() {
 function handleChatInput() {
     const input_form = document.getElementById('input-text')
     const input_text = input_form.value;
+    const sanitized_text = sanitizeText(input_text);
     const date = new Date();
     // Record when the message is received to set response timeout
     const start_time = date.getTime();
@@ -101,7 +102,7 @@ function handleChatInput() {
     $.ajax({
         url: '/',
         data: {
-            'input_text': input_text,
+            'input_text': sanitized_text,
             'date': date,
         },
         dataType: 'json',
@@ -116,6 +117,12 @@ function handleChatInput() {
         }
     })
 }
+
+// Remove everything but alphnumeric and whitespace
+function sanitizeText(inputText) {
+    return inputText.replace(/[^a-zA-Z0-9 ]/g, "");
+}
+
 
 // Automatically scroll to bottom of message box
 function scrollToBottom() {
