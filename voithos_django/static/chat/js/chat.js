@@ -13,7 +13,6 @@ class MessageQueue {
 
     // Add a message to queue
     addMessage(message) {
-        console.log('adding: ' + message.message)
         // If this message isn't part of a chat response (and therefore didn't already add a typing indicator)
         if (!this.waitingForResponse && message.sender == VOITHOS && message.delay > 0) {
             this.addTypingIndicator();
@@ -56,7 +55,6 @@ class MessageQueue {
 
     // Add the message to the page and reset the process
     postMessage(message) {
-        console.log('posting: ' + message.message)
         if (message.sender == VOITHOS) {
             this.removeTypingIndicator();
         }
@@ -67,13 +65,11 @@ class MessageQueue {
     }
 
     addTypingIndicator() {
-        console.log('adding indicator')
         MESSAGE_BOX.innerHTML += `<div class='msg msg-voithos msg-indicator' id='typing-indicator'></div>`;
         scrollToBottom();
     }
 
     removeTypingIndicator() {
-        console.log('removing indicator')
         let indicator = document.getElementById('typing-indicator');
         if (indicator) {
             indicator.parentNode.removeChild(indicator);
