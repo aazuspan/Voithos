@@ -8,10 +8,20 @@ class MessageQueue {
         this.queue = [];
         // Currently waiting to poste
         this.active = false;
+        this.waitingForResponse = false;
     }
 
     // Add a message to queue
     addMessage(message) {
+        console.log('adding: ' + message.message)
+        // If this message isn't part of a chat response (and therefore didn't already add a typing indicator)
+        if (!this.waitingForResponse && message.sender == VOITHOS && message.delay > 0) {
+            this.addTypingIndicator();
+        }
+        else if (this.waitingForResponse && message.sender == VOITHOS) {
+            this.waitingForResponse = false;
+        }
+
         this.queue.push(message);
         this.checkStatus();
     }
@@ -23,21 +33,51 @@ class MessageQueue {
         }
     }
 
+    // Add a typing indicator to show that a response from Voithos is loading
+    waitForResponse() {
+        this.waitingForResponse = true;
+        this.addTypingIndicator();
+    }
+
     // Start process of posting message
     activate() {
         this.active = true;
         let nextMessage = this.queue.shift();
 
-        setTimeout(() => {
+        if (nextMessage.delay > 0) {
+            setTimeout(() => {
+                this.postMessage(nextMessage);
+            }, nextMessage.delay);
+        }
+        else {
             this.postMessage(nextMessage);
-        }, nextMessage.delay);
+        }
     }
 
     // Add the message to the page and reset the process
     postMessage(message) {
+        console.log('posting: ' + message.message)
+        if (message.sender == VOITHOS) {
+            this.removeTypingIndicator();
+        }
+
         message.post();
         this.active = false;
         this.checkStatus();
+    }
+
+    addTypingIndicator() {
+        console.log('adding indicator')
+        MESSAGE_BOX.innerHTML += `<div class='msg msg-voithos msg-indicator' id='typing-indicator'></div>`;
+        scrollToBottom();
+    }
+
+    removeTypingIndicator() {
+        console.log('removing indicator')
+        let indicator = document.getElementById('typing-indicator');
+        if (indicator) {
+            indicator.parentNode.removeChild(indicator);
+        }
     }
 }
 
@@ -107,6 +147,11 @@ function handleChatInput() {
         },
         dataType: 'json',
 
+        beforeSend: function () {
+            // Add typing indicator and wait for a response from Voithos
+            queue.waitForResponse();
+        },
+
         // If a server response is received, display the response
         success: function (data) {
             const end_time = new Date().getTime();
@@ -115,7 +160,7 @@ function handleChatInput() {
             const actual_delay = Math.max(response_delay - (end_time - start_time), 0);
             queue.addMessage(new Message(data['output'], VOITHOS, actual_delay));
         }
-    })
+    });
 }
 
 // Remove everything but alphnumeric and whitespace
@@ -131,7 +176,3 @@ function scrollToBottom() {
         behavior: 'smooth'
     });
 }
-
-
-
-

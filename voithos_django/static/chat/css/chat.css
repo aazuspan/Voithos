@@ -12,9 +12,9 @@ body {
 }
 
 .msg {
-    width: 60%;
+    width: 55%;
     padding: 18px;
-    margin: 6px;
+    margin: 12px;
     border-radius: 15px;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
     font-family: 'Quicksand', sans-serif;
@@ -24,15 +24,19 @@ body {
 .msg-voithos {
     background-color: #0ac2af;
     color: white;
-    float: left;
     border-top-left-radius: 0px;
 }
 
 .msg-user {
     background-color: rgb(250, 255, 255);
     color: black;
-    float: right;
     border-top-right-radius: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
+.msg-indicator {
+    width: 100px;
 }
 
 .navbar {
@@ -68,4 +72,11 @@ body {
 
 #input-group-wrapper {
     transition: 2s box-shadow;
+}
+
+#typing-indicator {
+    background-image: url("../images/TypingIndicator.gif");
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: 10px 2px;
 }
