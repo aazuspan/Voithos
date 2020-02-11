@@ -10,8 +10,8 @@ def chat(request):
     """
     if request.GET.get('input_text'):
         request_dict = request.GET.dict()
-        response = Voithos().respond(request_dict)
-        return JsonResponse({'output': response})
+        response, response_delay = Voithos().respond(request_dict)
+        return JsonResponse({'output': response, 'delay': response_delay})
 
     return render(request, 'chat/index.html')
 
