@@ -13,14 +13,6 @@ class MessageQueue {
 
     // Add a message to queue
     addMessage(message) {
-        // If this message isn't part of a chat response (and therefore didn't already add a typing indicator)
-        if (!this.waitingForResponse && message.sender == VOITHOS && message.delay > 0) {
-            this.addTypingIndicator();
-        }
-        else if (this.waitingForResponse && message.sender == VOITHOS) {
-            this.waitingForResponse = false;
-        }
-
         this.queue.push(message);
         this.checkStatus();
     }
@@ -44,6 +36,13 @@ class MessageQueue {
         let nextMessage = this.queue.shift();
 
         if (nextMessage.delay > 0) {
+            if (!this.waitingForResponse && nextMessage.sender == VOITHOS) {
+                this.addTypingIndicator();
+            }
+            else {
+                this.waitingForResponse = false;
+            }
+
             setTimeout(() => {
                 this.postMessage(nextMessage);
             }, nextMessage.delay);
@@ -112,7 +111,7 @@ function intro() {
         }, { once: true });
     }, 3000);
 
-    queue.addMessage(new Message('If you\'re not sure what to ask me, you can type "help" to get a list of commands I will recognize.', VOITHOS, 4500));
+    queue.addMessage(new Message('If you\'re not sure what to ask me, you can type "help" to get a list of commands I will recognize.', VOITHOS, 2000));
 }
 
 // Handle chat input by making a GET request with the data and receiving and displaying the response
