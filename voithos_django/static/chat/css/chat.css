@@ -1,5 +1,23 @@
+:root {
+    --primary-color: rgb(255, 255, 255);
+    --secondary-color: #0ac2af;
+    --primary-font-color: #000000;
+    --secondary-font-color: #ffffff;
+    --navbar-color: #ffffff;
+    --navbar-font-color: #7e7e7e;
+    --navbar-font-color-hover: #353535;
+}
+
+[data-theme='dark'] {
+    --primary-color: rgb(43, 43, 43);
+    --primary-font-color: #ffffff;
+    --navbar-color: #353535;
+    --navbar-font-color: #cccccc;
+    --navbar-font-color-hover: #ffffff;
+}
+
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--primary-color);
 }
 
 .msg-container {
@@ -22,14 +40,14 @@ body {
 }
 
 .msg-voithos {
-    background-color: #0ac2af;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--secondary-font-color);
     border-top-left-radius: 0px;
 }
 
 .msg-user {
-    background-color: rgb(250, 255, 255);
-    color: black;
+    background-color: var(--navbar-color);
+    color: var(--primary-font-color);
     border-top-right-radius: 0px;
     margin-left: auto;
     margin-right: 0px;
@@ -40,12 +58,12 @@ body {
 }
 
 .navbar {
-    background-color: white;
+    background-color: var(--navbar-color);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .navbar-brand {
-    color: #0ac2af;
+    color: var(--secondary-color);
     font-family: 'Fredoka One', cursive;
     font-size: x-large;
 }
@@ -55,15 +73,17 @@ body {
 }
 
 .nav-link {
-    color: #7e7e7e;
+    color: var(--navbar-font-color);
 }
 
 .nav-link:hover {
-    color: #353535;
+    color: var(--navbar-font-color-hover);
 }
 
-.form-control {
+.form-control, .form-control:focus {
     font-size: large;
+    background-color: var(--navbar-color);
+    color: var(--primary-font-color);
 }
 
 .blue-highlight {
