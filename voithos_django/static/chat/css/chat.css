@@ -16,11 +16,6 @@
     --navbar-font-color-hover: #ffffff;
 }
 
-* {
-    /* Smooth transitions for dark/light theme switches */
-    transition: 0.5s background-color;
-}
-
 body {
     background-color: var(--primary-color);
 }

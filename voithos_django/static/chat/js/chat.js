@@ -180,11 +180,8 @@ loadSavedTheme();
 function loadSavedTheme() {
     const savedTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
     themeToggle.checked = true;
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        if (savedTheme === 'dark') {
-            themeToggle.checked = true;
-        }
+    if (savedTheme === 'dark') {
+        themeToggle.click();
     }
 }
 
