@@ -25,11 +25,8 @@ class Voithos:
         :param request_dict: Dictionary of parameters associated with a user request, such as input_text, date, etc.
         :return : A string response from Voithos
         """
-        try:
-            self.nlu_engine = SnipsNLUEngine.from_path(self.engine_path)
-        # If the NLU engine is missing (eg retraining)
-        except LoadingError:
-            logging.exception('Failed to load NLU engine!')
+        self.nlu_engine = self.load_nlu_engine()
+        if not self.nlu_engine:
             return self.error_msg
 
         cmd = self.cmd_handler.choose_command(request_dict)
@@ -54,6 +51,19 @@ class Voithos:
         logging.info(
             f'Input "{request_dict["input_text"]}" generates response "{response}" from command "{cmd_name}"')
         return response, response_delay
+
+    def load_nlu_engine(self):
+        """
+        Try to load the NLU engine from the local drive.
+        :return : Trained SnipsNLUEngine or none
+        """
+        nlu_engine = None
+        try:
+            nlu_engine = SnipsNLUEngine.from_path(self.engine_path)
+        except LoadingError:
+            logging.exception('Failed to load NLU engine!')
+
+        return nlu_engine
 
     @staticmethod
     def calculate_response_delay():
