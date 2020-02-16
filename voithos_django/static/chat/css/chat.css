@@ -16,6 +16,11 @@
     --navbar-font-color-hover: #ffffff;
 }
 
+* {
+    /* Smooth transitions for dark/light theme switches */
+    transition: 0.5s background-color;
+}
+
 body {
     background-color: var(--primary-color);
 }
@@ -100,3 +105,61 @@ body {
     background-size: 80px;
     background-position: 10px 2px;
 }
+
+/* Light/dark theme switch styling */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  #theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+    margin-bottom: 0;
+}
+  
+  #theme-switch input {
+    display:none;
+  }
+  
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+  
+  input:checked + .slider {
+    background-color: #555454;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: rgb(34, 34, 34);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
