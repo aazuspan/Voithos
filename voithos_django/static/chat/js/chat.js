@@ -172,8 +172,21 @@ function scrollToBottom() {
     });
 }
 
-const toggleSwitch = document.getElementById('theme-switch');
-toggleSwitch.addEventListener('change', switchTheme, false);
+const themeToggle = document.getElementById('theme-switch');
+themeToggle.addEventListener('change', switchTheme, false);
+loadSavedTheme();
+
+// Check if dark/light theme has been previously set and switch to that if so
+function loadSavedTheme() {
+    const savedTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    themeToggle.checked = true;
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        if (savedTheme === 'dark') {
+            themeToggle.checked = true;
+        }
+    }
+}
 
 // Switch between dark and light themes
 function switchTheme(e) {
