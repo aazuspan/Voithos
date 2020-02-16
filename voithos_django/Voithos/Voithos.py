@@ -23,23 +23,20 @@ class Voithos:
         """
         Create a response to a user input through the CommandHandler
         :param request_dict: Dictionary of parameters associated with a user request, such as input_text, date, etc.
-        :return : A string response from Voithos
+        :return : A string response from Voithos and the delay for posting that response in millis
         """
-        try:
-            self.nlu_engine = SnipsNLUEngine.from_path(
-                self.engine_path, resources=load_resources("snips_nlu_en"))
-        # If the NLU engine is missing (eg retraining)
-        except LoadingError:
-            logging.exception('Failed to load NLU engine!')
-            return self.error_msg
+        response = None
+        response_delay = 0
+
+        self.nlu_engine = self.load_nlu_engine()
+        if not self.nlu_engine:
+            response = self.error_msg
 
         cmd = self.cmd_handler.choose_command(request_dict)
-        response = None
-        cmd_name = None
+
         if not cmd:
             response = random.choice(self.unknown_cmd_responses)
         else:
-            cmd_name = cmd.name
             try:
                 response = str(cmd.respond())
             except Exception:
@@ -47,14 +44,25 @@ class Voithos:
             if not response:
                 response = self.error_msg
 
-        if cmd_name == 'help':
-            response_delay = 0
-        else:
-            response_delay = self.calculate_response_delay()
+            if cmd.name != 'help':
+                response_delay = self.calculate_response_delay()
 
-        logging.info(
-            f'Input "{request_dict["input_text"]}" generates response "{response}" from command "{cmd_name}"')
+            logging.info(
+                f'Input "{request_dict["input_text"]}" generates response "{response}" from command "{cmd.name}"')
         return response, response_delay
+
+    def load_nlu_engine(self):
+        """
+        Try to load the NLU engine from the local drive.
+        :return : Trained SnipsNLUEngine or none
+        """
+        nlu_engine = None
+        try:
+            nlu_engine = SnipsNLUEngine.from_path(self.engine_path)
+        except LoadingError:
+            logging.exception('Failed to load NLU engine!')
+
+        return nlu_engine
 
     @staticmethod
     def calculate_response_delay():

@@ -198,18 +198,7 @@
   "dataset_metadata": {
     "entities": {},
     "language_code": "en",
-    "slot_name_mappings": {
-      "bye": {},
-      "flipcoin": {},
-      "greeting": {},
-      "help": {},
-      "joke": {},
-      "random fact": {},
-      "rolldice": {},
-      "say": {},
-      "search": {},
-      "time": {}
-    }
+    "slot_name_mappings": {}
   },
   "intent_parsers": [
     "lookup_intent_parser",

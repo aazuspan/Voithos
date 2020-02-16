@@ -184,46 +184,5 @@
     },
     "unit_name": "probabilistic_intent_parser"
   },
-  "slot_fillers": [
-    {
-      "intent": "bye",
-      "slot_filler_name": "slot_filler_0"
-    },
-    {
-      "intent": "flipcoin",
-      "slot_filler_name": "slot_filler_1"
-    },
-    {
-      "intent": "greeting",
-      "slot_filler_name": "slot_filler_2"
-    },
-    {
-      "intent": "help",
-      "slot_filler_name": "slot_filler_3"
-    },
-    {
-      "intent": "joke",
-      "slot_filler_name": "slot_filler_4"
-    },
-    {
-      "intent": "random fact",
-      "slot_filler_name": "slot_filler_5"
-    },
-    {
-      "intent": "rolldice",
-      "slot_filler_name": "slot_filler_6"
-    },
-    {
-      "intent": "say",
-      "slot_filler_name": "slot_filler_7"
-    },
-    {
-      "intent": "search",
-      "slot_filler_name": "slot_filler_8"
-    },
-    {
-      "intent": "time",
-      "slot_filler_name": "slot_filler_9"
-    }
-  ]
+  "slot_fillers": []
 }

@@ -171,3 +171,26 @@ function scrollToBottom() {
         behavior: 'smooth'
     });
 }
+
+const themeToggle = document.getElementById('theme-switch');
+themeToggle.addEventListener('change', switchTheme, false);
+loadSavedTheme();
+
+// Check if dark/light theme has been previously set and switch to that if so
+function loadSavedTheme() {
+    const savedTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    themeToggle.checked = true;
+    if (savedTheme === 'dark') {
+        themeToggle.click();
+    }
+}
+
+// Switch between dark and light themes
+function switchTheme(e) {
+    let currentTheme = 'light';
+    if (e.target.checked) {
+        currentTheme = 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
+}
