@@ -172,15 +172,15 @@ function scrollToBottom() {
     });
 }
 
-const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
-}
-
+const toggleSwitch = document.getElementById('theme-switch');
 toggleSwitch.addEventListener('change', switchTheme, false);
+
+// Switch between dark and light themes
+function switchTheme(e) {
+    let currentTheme = 'light';
+    if (e.target.checked) {
+        currentTheme = 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
+}
