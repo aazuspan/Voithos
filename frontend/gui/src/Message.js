@@ -16,7 +16,12 @@ class Message extends React.Component {
                 this.setState({
                     response: res.data.output,
                 })
-            });
+            })
+            .catch((err) => {
+                this.setState({
+                    response: "There was an error connecting to Voithos's server. Try again later."
+                });
+            })
     }
 
     handleInputChange = (event) => {
