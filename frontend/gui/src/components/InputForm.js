@@ -32,7 +32,9 @@ class InputForm extends React.Component {
 
         this.setState({
             formContent: '',
-        })
+        });
+
+        this.props.waitForResponse();
 
         axios.get('http://127.0.0.1:8000/api/', { params: { input_text: newMessage.content } })
             .then(res => {
@@ -41,6 +43,7 @@ class InputForm extends React.Component {
                     sender: VOITHOS,
                 }
                 this.props.addMessage(responseMessage);
+                this.props.stopWaitingForResponse();
             })
             .catch((err) => {
                 let errorMessage = {
@@ -48,6 +51,7 @@ class InputForm extends React.Component {
                     sender: VOITHOS,
                 }
                 this.props.addMessage(errorMessage);
+                this.props.stopWaitingForResponse();
             })
     }
 

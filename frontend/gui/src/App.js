@@ -9,6 +9,7 @@ class App extends React.Component {
 
   state = {
     messages: [],
+    waitingForResponse: false,
   }
 
   // Add a new message object to the list of messages
@@ -18,6 +19,20 @@ class App extends React.Component {
 
     this.setState({
       messages: currentMessages,
+    });
+  }
+
+  // Start waiting for a response from Voithos (show typing indicator)
+  waitForResponse = () => {
+    this.setState({
+      waitingForResponse: true,
+    })
+  }
+
+  // Stop waiting for a response from Voithos (hide typing indicator)
+  stopWaitingForResponse = () => {
+    this.setState({
+      waitingForResponse: false,
     })
   }
 
@@ -25,8 +40,15 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <MessageList messages={this.state.messages} />
-        <InputForm addMessage={this.addMessage} />
+
+        <MessageList
+          messages={this.state.messages}
+          showTypingIndicator={this.state.waitingForResponse} />
+
+        <InputForm
+          addMessage={this.addMessage}
+          waitForResponse={this.waitForResponse}
+          stopWaitingForResponse={this.stopWaitingForResponse} />
       </>
     );
   }

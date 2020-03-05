@@ -135,6 +135,15 @@ input:checked + .slider:before {
     margin-right: 0px;
 }
 
+.msg-indicator {
+    width: 150px;
+}
+
+.spinner-grow {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
 
 .form-control, .form-control:focus {
     font-size: large;
