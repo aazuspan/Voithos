@@ -65,10 +65,12 @@ class InputForm extends React.Component {
                             autoComplete="off"
                             aria-label="Input form"
                             value={this.state.formContent}
-                            onChange={this.handleFormUpdate}>
+                            onChange={this.handleFormUpdate}
+                            maxLength="80"
+                        >
                         </FormControl>
                         <InputGroup.Append>
-                            <Button variant="outline-secondary" type="submit">
+                            <Button type="submit" className="btn-outline-secondary btn-light">
                                 <FontAwesomeIcon icon={faReply} />
                             </Button>
                         </InputGroup.Append>
