@@ -16,6 +16,9 @@
     --navbar-font-color-hover: #ffffff;
 }
 
+body {
+    background-color: var(--primary-color);
+}
 
 /* Navbar styling */
 .navbar {
@@ -98,6 +101,40 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.msg-container {
+    position: absolute;
+    top: 60px;
+    bottom: 80px;
+    width: 100%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.msg {
+    width: 55%;
+    padding: 18px;
+    margin: 12px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Quicksand', sans-serif;
+    font-size: large;
+}
+
+.msg-voithos {
+    background-color: var(--secondary-color);
+    color: var(--secondary-font-color);
+    border-top-left-radius: 0px;
+}
+
+.msg-user {
+    background-color: var(--navbar-color);
+    color: var(--primary-font-color);
+    border-top-right-radius: 0px;
+    margin-left: auto;
+    margin-right: 0px;
+}
+
 
 .form-control, .form-control:focus {
     font-size: large;

@@ -3,10 +3,9 @@ import React from 'react';
 
 function Message(props) {
     return (
-        <>
-            <h3>{props.sender}</h3>
-            <p>{props.content}</p>
-        </>
+        <div className={`msg msg-${props.sender}`}>
+            {props.content}
+        </div>
     )
 }
 
