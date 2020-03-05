@@ -57,7 +57,7 @@ class InputForm extends React.Component {
             newMessageHistoryIndex = this.state.currentMessageHistoryIndex - 1;
         }
         else {
-            newMessageHistoryIndex = 0;
+            newMessageHistoryIndex = -1;
         }
 
         this.setState({
@@ -77,7 +77,7 @@ class InputForm extends React.Component {
 
     // Set the form content to a previous user message based on position in message history
     loadMessageFromHistory = () => {
-        if (this.state.currentMessageHistoryIndex !== -1) {
+        if (this.state.currentMessageHistoryIndex !== -1 && this.state.userMessageHistory.length > 0) {
             this.setState({
                 formContent: this.state.userMessageHistory[this.state.currentMessageHistoryIndex],
             })
