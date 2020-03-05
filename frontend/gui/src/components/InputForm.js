@@ -16,6 +16,11 @@ class InputForm extends React.Component {
         currentMessageHistoryIndex: -1,
     }
 
+    // Remove everything but alphnumeric and whitespace
+    sanitizeText(inputText) {
+        return inputText.replace(/[^a-zA-Z0-9 ]/g, "");
+    }
+
     handleFormUpdate = (event) => {
         this.setState({
             formContent: event.target.value,
@@ -87,6 +92,8 @@ class InputForm extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
+        let sanitizedContent = this.sanitizeText(this.state.formContent);
+
         let newMessage = {
             content: this.state.formContent,
             sender: USER,
@@ -102,7 +109,7 @@ class InputForm extends React.Component {
 
         this.props.waitForResponse();
 
-        axios.get('http://127.0.0.1:8000/api/', { params: { input_text: newMessage.content } })
+        axios.get('http://127.0.0.1:8000/api/', { params: { input_text: sanitizedContent } })
             .then(res => {
                 let responseMessage = {
                     content: res.data.content,
@@ -137,7 +144,10 @@ class InputForm extends React.Component {
                         >
                         </FormControl>
                         <InputGroup.Append>
-                            <Button type="submit" className="btn-outline-secondary btn-light">
+                            <Button
+                                type="submit"
+                                className="form-submit-btn"
+                                disabled={!this.state.formContent}>
                                 <FontAwesomeIcon icon={faReply} />
                             </Button>
                         </InputGroup.Append>

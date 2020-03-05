@@ -6,6 +6,7 @@
     --navbar-color: #ffffff;
     --navbar-font-color: #7e7e7e;
     --navbar-font-color-hover: #353535;
+    --form-outline-color: #969a9e;
 }
 
 [data-theme='dark'] {
@@ -14,6 +15,7 @@
     --navbar-color: #353535;
     --navbar-font-color: #cccccc;
     --navbar-font-color-hover: #ffffff;
+    --form-outline-color: #f8f9fa;
 }
 
 body {
@@ -151,3 +153,8 @@ input:checked + .slider:before {
     color: var(--primary-font-color);
 }
   
+.form-submit-btn {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--form-outline-color) !important;
+}
