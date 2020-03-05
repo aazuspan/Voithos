@@ -14,4 +14,4 @@ def api_response(request):
         request_dict = request.GET.dict()
         response, response_delay = Voithos().respond(request_dict)
 
-    return JsonResponse({'output': response, 'delay': response_delay})
+    return JsonResponse({'content': response, 'delay': response_delay})
