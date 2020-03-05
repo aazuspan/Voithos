@@ -98,4 +98,10 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.form-control, .form-control:focus {
+    font-size: large;
+    background-color: var(--navbar-color);
+    color: var(--primary-font-color);
+}
   

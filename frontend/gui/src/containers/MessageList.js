@@ -5,7 +5,6 @@ import Message from '../components/Message';
 function MessageList(props) {
     return (
         <>
-            <Message></Message>
         </>
     )
 }
