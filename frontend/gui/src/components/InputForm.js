@@ -34,6 +34,15 @@ class InputForm extends React.Component {
         else if (event.key === 'ArrowDown') {
             this.messageHistoryDown();
         }
+        else if (event.key === 'Escape') {
+            this.clearFormContents();
+        }
+    }
+
+    clearFormContents = () => {
+        this.setState({
+            formContent: '',
+        })
     }
 
     // Allow access to previous message in history
