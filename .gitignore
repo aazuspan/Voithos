@@ -4,7 +4,7 @@ secret.py
 .vscode/
 NLU
 *.out
-
+deploying.txt
 staticfiles/
 
 # dependencies
