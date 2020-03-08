@@ -7,7 +7,7 @@ class RollDice(Command):
     """
     Voithos rolls a die
     """
-    name = 'rolldice'
+    name = 'roll dice'
     utterances = [
         'roll dice',
         'roll a die',

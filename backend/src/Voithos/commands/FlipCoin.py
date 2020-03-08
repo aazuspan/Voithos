@@ -6,7 +6,7 @@ class FlipCoin(Command):
     """
     Voithos flips a coin
     """
-    name = 'flipcoin'
+    name = 'flip coin'
     utterances = [
         'flip a coin',
         'toss a coin',
@@ -14,7 +14,8 @@ class FlipCoin(Command):
         'heads or tails?',
         'tails or heads?',
         'coin toss',
-        'flip coin'
+        'flip coin',
+        'coin flip',
     ]
     help_description = 'Have Voithos flip a coin.'
 

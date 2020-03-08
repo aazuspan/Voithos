@@ -14,7 +14,7 @@ class Bye(Command):
         'goodbye Voithos',
         "I'm leaving"
     ]
-    help_description = 'Close Voithos.'
+    help_description = 'Voithos says goodbye.'
 
     def respond(self):
         """
