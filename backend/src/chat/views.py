@@ -8,10 +8,9 @@ def api_response(request):
     Handle the chat page. If a GET request is received with input text, pass it to Voithos and return the Json response
     """
     response = 'None'
-    response_delay = 'None'
 
     if request.GET.get('input_text'):
         request_dict = request.GET.dict()
-        response, response_delay = Voithos().respond(request_dict)
+        response = Voithos().respond(request_dict)
 
-    return JsonResponse({'content': response, 'delay': response_delay})
+    return JsonResponse({'content': response})

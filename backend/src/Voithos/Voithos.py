@@ -23,10 +23,9 @@ class Voithos:
         """
         Create a response to a user input through the CommandHandler
         :param request_dict: Dictionary of parameters associated with a user request, such as input_text, date, etc.
-        :return : A string response from Voithos and the delay for posting that response in millis
+        :return : A string response from Voithos
         """
         response = None
-        response_delay = 0
 
         self.nlu_engine = self.load_nlu_engine()
         if not self.nlu_engine:
@@ -44,12 +43,9 @@ class Voithos:
             if not response:
                 response = self.error_msg
 
-            if cmd.name != 'help':
-                response_delay = self.calculate_response_delay()
-
             logging.info(
                 f'Input "{request_dict["input_text"]}" generates response "{response}" from command "{cmd.name}"')
-        return response, response_delay
+        return response
 
     def load_nlu_engine(self):
         """
@@ -63,13 +59,3 @@ class Voithos:
             logging.exception('Failed to load NLU engine!')
 
         return nlu_engine
-
-    @staticmethod
-    def calculate_response_delay():
-        """
-        Calculate an appropriate delay time for Voithos to process a given response
-        :return: Delay time in milliseconds
-        """
-        min_response_delay = 1000
-
-        return min_response_delay
