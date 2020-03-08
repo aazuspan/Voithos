@@ -12,6 +12,12 @@ class App extends React.Component {
     waitingForResponse: false,
   }
 
+  componentDidMount = () => {
+    if (!sessionStorage.getItem('introduced')) {
+      this.scriptedIntro();
+    }
+  }
+
   // Add a new message object to the list of messages
   addMessage = (message) => {
     let currentMessages = this.state.messages.slice();
@@ -34,6 +40,22 @@ class App extends React.Component {
     this.setState({
       waitingForResponse: false,
     })
+  }
+
+  scriptedIntro = () => {
+    this.waitForResponse();
+
+    let introMessage = {
+      content: "Hello, I am Voithos! I am an automated personal assistant. Type 'help' to see a list of commands I recognize.",
+      sender: "voithos",
+    }
+
+    setTimeout(() => {
+      this.stopWaitingForResponse();
+      this.addMessage(introMessage);
+    }, 1500);
+
+    sessionStorage.setItem('introduced', true);
   }
 
   render() {
