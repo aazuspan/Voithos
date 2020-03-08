@@ -20,13 +20,6 @@ class Command(metaclass=require_attributes("name", "utterances", "help_descripti
     def user_input(self):
         return self.request_dict['input_text']
 
-    @property
-    def date(self):
-        if self.request_dict['date']:
-            return self.request_dict['date']
-        else:
-            return None
-
     @abstractmethod
     def respond(self):
         return
