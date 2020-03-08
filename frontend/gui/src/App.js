@@ -13,9 +13,7 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    if (!sessionStorage.getItem('introduced')) {
-      this.scriptedIntro();
-    }
+    this.scriptedIntro();
   }
 
   // Add a new message object to the list of messages
@@ -43,12 +41,23 @@ class App extends React.Component {
   }
 
   scriptedIntro = () => {
-    this.waitForResponse();
+    let shortIntro = "Hello!"
+    let longIntro = `Hello, I am Voithos! I am an automated personal assistant that
+            uses machine learning to perform tasks. You can give me commands or ask
+            me questions using the form at the bottom of the screen. For example,
+            you could say "Tell me a joke, Voithos!". You can also type "help" to
+            get a list of commands I will recognize.`
 
     let introMessage = {
-      content: "Hello, I am Voithos! I am an automated personal assistant. Type 'help' to see a list of commands I recognize.",
+      content: shortIntro,
       sender: "voithos",
     }
+
+    if (!sessionStorage.getItem('introduced')) {
+      introMessage.content = longIntro;
+    }
+
+    this.waitForResponse();
 
     setTimeout(() => {
       this.stopWaitingForResponse();
