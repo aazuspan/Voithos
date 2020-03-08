@@ -6,6 +6,7 @@
     --navbar-color: #ffffff;
     --navbar-font-color: #7e7e7e;
     --navbar-font-color-hover: #353535;
+    --form-outline-color: #969a9e;
 }
 
 [data-theme='dark'] {
@@ -14,16 +15,100 @@
     --navbar-color: #353535;
     --navbar-font-color: #cccccc;
     --navbar-font-color-hover: #ffffff;
+    --form-outline-color: #f8f9fa;
 }
 
 body {
     background-color: var(--primary-color);
 }
 
+/* Navbar styling */
+.navbar {
+    background-color: var(--navbar-color);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+
+.navbar-light .navbar-brand {
+    color: var(--secondary-color);
+    font-family: 'Fredoka One', cursive;
+    font-size: x-large;
+}
+
+.navbar-light .navbar-brand:hover {
+    color: #2f9288;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--navbar-font-color);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: var(--navbar-font-color-hover);
+}
+
+
+/* Light/dark theme switch styling */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+#theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+    margin-bottom: 0;
+}
+  
+#theme-switch input {
+    display:none;
+}
+  
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+  
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+  
+input:checked + .slider {
+    background-color: #555454;
+}
+  
+input:checked + .slider:before {
+    transform: translateX(26px);
+    background-color: rgb(34, 34, 34);
+}
+  
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
 .msg-container {
     position: absolute;
     top: 60px;
-    bottom: 80px;
+    bottom: 65px;
     width: 100%;
     padding: 20px;
     overflow-y: auto;
@@ -54,30 +139,13 @@ body {
 }
 
 .msg-indicator {
-    width: 100px;
+    width: 150px;
 }
 
-.navbar {
-    background-color: var(--navbar-color);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.navbar-brand {
-    color: var(--secondary-color);
-    font-family: 'Fredoka One', cursive;
-    font-size: x-large;
-}
-
-.navbar-brand:hover {
-    color: #2f9288;
-}
-
-.nav-link {
-    color: var(--navbar-font-color);
-}
-
-.nav-link:hover {
-    color: var(--navbar-font-color-hover);
+.spinner-grow {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
 }
 
 .form-control, .form-control:focus {
@@ -85,76 +153,9 @@ body {
     background-color: var(--navbar-color);
     color: var(--primary-font-color);
 }
-
-.blue-highlight {
-    box-shadow: 0px 0px 30px rgb(29, 172, 255);
+  
+.form-submit-btn {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--form-outline-color) !important;
 }
-
-#input-group-wrapper {
-    transition: 2s box-shadow;
-}
-
-#typing-indicator {
-    background-image: url("../images/TypingIndicator.gif");
-    background-repeat: no-repeat;
-    background-size: 80px;
-    background-position: 10px 2px;
-}
-
-/* Light/dark theme switch styling */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-  }
-
-  #theme-switch {
-    display: inline-block;
-    height: 34px;
-    position: relative;
-    width: 60px;
-    margin-bottom: 0;
-}
-  
-  #theme-switch input {
-    display:none;
-  }
-  
-  .slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    background-color: #fff;
-    bottom: 4px;
-    content: "";
-    height: 26px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 26px;
-  }
-  
-  input:checked + .slider {
-    background-color: #555454;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-    background-color: rgb(34, 34, 34);
-  }
-  
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
-  
